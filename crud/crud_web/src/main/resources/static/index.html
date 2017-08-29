@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html  lang="en" ng-app="crudApp">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<!-- Angular Dependency  -->
+<script type="text/javascript" src="js/lib/angular.min.js"></script>
+<script type="text/javascript" src="js/lib/angular-route.js"></script>
+<script type="text/javascript" src="js/lib/ngStorage.min.js"></script>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
+<!-- Angular Files -->
+<script type="text/javascript" src="js/app/app.js"></script>
+<script type="text/javascript" src="js/app/router.js"></script>
+<script type="text/javascript" src="js/controller/loginCtrl.js"></script>
+<script type="text/javascript" src="js/service/loginService.js"></script>
+<script type="text/javascript" src="js/controller/registerationCtrl.js"></script>
+<script type="text/javascript" src="js/service/registerationService.js"></script>
+<script type="text/javascript" src="js/controller/taskCtrl.js"></script>
+<script type="text/javascript" src="js/controller/orderFormCtrl.js"></script>
+
+<!-- Base Url -->
+<base href="http://localhost:8080/">
+<body>
+
+<div ng-view></div>
+
+</body>
+</html>

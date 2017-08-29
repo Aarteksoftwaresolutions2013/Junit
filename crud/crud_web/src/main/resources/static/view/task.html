@@ -1,0 +1,21 @@
+<style>
+.addtask{
+ margin-top: 3%;
+ width: 20%;
+ margin-left: 2%;
+}
+</style>
+<body>
+  <form class="form-inline">
+   <div ng-controller="taskCtrl" class="form-group">
+    <input type="text" class="form-control addtask" name="task" placeholder="Add a new task" ng-model="newTask"/>&nbsp&nbsp
+    <button type="submit" class="btn btn-default" ng-click="addTask()">Add Task</button>
+   
+   <ul>
+    <li ng-repeat="task in tasks"">
+    <span> {{task.title}} </span>
+    </li>
+   </ul>
+   </div>
+  </form>
+</body>

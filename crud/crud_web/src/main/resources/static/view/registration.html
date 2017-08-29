@@ -1,0 +1,58 @@
+<style>
+.form-horizontal{
+ margin-left: 2%;
+}
+</style>
+<form class="form-horizontal" >
+  <fieldset ng-controller="registerationCtrl">
+    <div id="legend">
+      <legend class="">Register</legend>
+    </div>
+    <div class="control-group">
+      <!-- First Name -->
+      <label class="control-label"  for="firstName">First Name</label>
+      <div class="controls">
+        <input type="text" id="firstName" name="firstName" placeholder="" class="input-xlarge" ng-model="userDetails.firstName">
+      </div>
+    </div>
+    
+    <div class="control-group">
+    <!-- Last Name -->
+     <label class="control-label" for="lastName">Last Name</label>
+     <div class="controls">
+     <input type="text" id="lastName" name="lastName" class="input-xlarge" ng-model="userDetails.lastName">
+     </div>
+    </div>
+ 
+   <div class="control-group">
+      <!-- Contact Number -->
+      <label class="control-label"  for="contactNumber">Contact Number</label>
+      <div class="controls">
+        <input type="text" id="contactNumber" name="contactNumber" placeholder="" class="input-xlarge" ng-model="userDetails.contactNumber">
+      </div>
+    </div>
+ 
+     <div class="control-group">
+      <!-- Email -->
+      <label class="control-label"  for="email">Email</label>
+      <div class="controls">
+        <input type="text" id="email" name="email" placeholder="" class="input-xlarge" ng-model="userDetails.email">
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <!-- Password -->
+      <label class="control-label"  for="password">Password</label>
+      <div class="controls">
+        <input type="password" id="password" name="password" placeholder="" class="input-xlarge" ng-model="userDetails.password">
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success" ng-click="saveUser()">Register</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
