@@ -63,13 +63,13 @@ public class RegistrationConrollerTest {
 				.andExpect(status().isOk());
 		MvcResult mvcResulet =	result.andReturn();
 		MockHttpServletResponse response  = mvcResulet.getResponse();
-		System.out.println(response.getContentAsString());
+		
 		assertEquals("200", response.getContentAsString());
 	}
 
 	//Negative Test Case
 	@Test
-	public void testSaveUser_404() throws Exception {
+	public void testSaveUserNotSaved() throws Exception {
 		
 		registerUserDetails.setContactNumber("1234567891");
 		registerUserDetails.setFirstName("v kumar");
@@ -84,7 +84,7 @@ public class RegistrationConrollerTest {
 				.andExpect(status().isOk());
 		MvcResult mvcResulet =	result.andReturn();
 		MockHttpServletResponse response  = mvcResulet.getResponse();
-		System.out.println(response.getContentAsString());
-		assertEquals("404", response.getContentAsString());
+		
+		assertEquals("400", response.getContentAsString());
 	}
 }

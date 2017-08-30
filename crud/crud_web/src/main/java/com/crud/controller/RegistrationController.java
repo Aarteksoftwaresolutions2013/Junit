@@ -25,7 +25,7 @@ public class RegistrationController {
 		    status= registerService.saveUser(registerDetails);   
 		    return "200";
 	   }else{
-		    return "404";
+		    return "400";
 	   }
    }
 }

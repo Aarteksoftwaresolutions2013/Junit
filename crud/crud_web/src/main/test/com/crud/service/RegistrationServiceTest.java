@@ -41,14 +41,14 @@ public class RegistrationServiceTest {
 		registerUserDetails.setPassword("1234567");
 		
 	  boolean checkRegiseterUser = 	registrationSerivice.saveUser(registerUserDetails) ;
-	  System.out.println(checkRegiseterUser);
+	 
 	  assertEquals(true,checkRegiseterUser);
 	}
 	
 	
 	//Negative Test Case
 	@Test
-	public void testSaveUser_404_WithoutEmailId() {
+	public void testSaveUserWithoutEmailId() {
 		
 		registerUserDetails.setContactNumber("1234567891");
 		registerUserDetails.setFirstName("vicfgfgKumar");
@@ -56,12 +56,11 @@ public class RegistrationServiceTest {
 		registerUserDetails.setPassword("1234567");
 		
 	  boolean checkRegiseterUser = 	registrationSerivice.saveUser(registerUserDetails) ;
-	  System.out.println(checkRegiseterUser);
 	  assertEquals(false,checkRegiseterUser);
 	}
 	
 	@Test
-	public void testSaveUser_404_WithoutPassword() {
+	public void testSaveUserWithoutPassword() {
 		
 		registerUserDetails.setContactNumber("1234567891");
 		registerUserDetails.setEmail("neeraj@gmail.com");
@@ -70,12 +69,11 @@ public class RegistrationServiceTest {
 		
 		
 	  boolean checkRegiseterUser = 	registrationSerivice.saveUser(registerUserDetails) ;
-	  System.out.println(checkRegiseterUser);
 	  assertEquals(false,checkRegiseterUser);
 	}
 	
 	@Test
-	public void testSaveUser_404_WithoutEmailAndPassword() {
+	public void testSaveUserWithoutEmailAndPassword() {
 		
 		registerUserDetails.setContactNumber("1234567891");
 		registerUserDetails.setFirstName("vicfgfgKumar");
@@ -83,7 +81,6 @@ public class RegistrationServiceTest {
 		
 		
 	  boolean checkRegiseterUser = 	registrationSerivice.saveUser(registerUserDetails) ;
-	  System.out.println(checkRegiseterUser);
 	  assertEquals(false,checkRegiseterUser);
 	}
 

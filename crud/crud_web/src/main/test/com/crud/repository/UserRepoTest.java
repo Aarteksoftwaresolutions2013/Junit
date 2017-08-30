@@ -27,14 +27,14 @@ public class UserRepoTest {
 	
 	/*.........Positive case.......*/
 	@Test
-	public void testFindByEmailPasswors_success() {
+	public void testFindByEmailPasswors() {
 	 Register user = userRepository.findByEmailAndPassword("shubh@gmail.com", "1234567");
 	 assertEquals("9713707037", user.getContactNumber());
 	}
 	
 	/*.........Negative case.......*/
 	@Test
-	public void testFindByEmailPassword_Unsess(){
+	public void testFindByEmailPasswordNotFound(){
 		 Register user = userRepository.findByEmailAndPassword("shubh@gmail.com", "123");
 		 assertNull(user);
 	}

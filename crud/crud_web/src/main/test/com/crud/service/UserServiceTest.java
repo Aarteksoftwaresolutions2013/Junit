@@ -35,25 +35,23 @@ public class UserServiceTest {
 	
 	//Positive test case
 	@Test
-	public void testFindByEmailAndPassword_Success() {
+	public void testFindByEmailAndPassword() {
 		
 	 user.setEmail("vicky@gmail.com");
 	 user.setPassword("1234567");
 		
 	boolean userDetails =  userService.findByEmailAndPassword(user);
-	System.out.println(userDetails);
 	assertEquals(true,userDetails);
 	}
 	
 	//Negative test case
 	@Test
-	public void testFindByEmailAndPassword_404() {
+	public void testFindByEmailAndPasswordNotFound() {
 		
 	 user.setEmail("vicky@gmail.com");
 	 user.setPassword("123456");
 		
 	boolean userDetails =  userService.findByEmailAndPassword(user);
-	System.out.println(userDetails);
 	assertEquals(false,userDetails);
 	}
 

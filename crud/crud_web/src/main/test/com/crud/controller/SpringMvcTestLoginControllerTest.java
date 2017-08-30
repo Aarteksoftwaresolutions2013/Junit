@@ -65,7 +65,7 @@ public class SpringMvcTestLoginControllerTest {
 	
 	//Negative Test Case
 	@Test
-	public void testUserLogin_404() throws Exception {
+	public void testUserLoginNotFound() throws Exception {
 		
 		register.setEmail("shubh@gmail.com");
 		register.setPassword("123456");
@@ -77,8 +77,8 @@ public class SpringMvcTestLoginControllerTest {
 
 		MvcResult mvcResult = result.andReturn();
 		MockHttpServletResponse response = mvcResult.getResponse();
-		System.out.println(response.getContentAsString());
-	    assertEquals("404",response.getContentAsString());
+		
+	    assertEquals("400",response.getContentAsString());
 	}
 	
 }
