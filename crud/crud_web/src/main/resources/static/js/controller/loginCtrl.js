@@ -14,9 +14,7 @@
 				console.log("user is valid")
 				console.log(data);
 				
-				
-				console.log($scope.userDetails.password);
-				if(data.status == '200'){
+				if(data.data == '200'){
 					console.log("user login successfull");
 					$sessionStorage.userSessionData  = {
 					email : $scope.email,

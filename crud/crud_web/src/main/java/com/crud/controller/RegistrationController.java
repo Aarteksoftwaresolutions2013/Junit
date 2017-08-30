@@ -18,17 +18,14 @@ public class RegistrationController {
 	@RequestMapping(value="/registerUser" , method=RequestMethod.POST)
    public String saveUser(@RequestBody Register registerDetails){
 	   System.out.println("Inside saveuser() method of registeration controller");
-	   System.out.println(registerDetails.getFirstName());
-	   System.out.println(registerDetails.getLastName());
-	   System.out.println(registerDetails.getContactNumber());
-	   System.out.println(registerDetails.getEmail());
-	   System.out.println(registerDetails.getPassword());
 	   
-	   boolean status= registerService.saveUser(registerDetails);
-	   if(status){
-		   return "200";
+	   boolean status=false;
+	  
+	   if(registerDetails.getEmail() != null && registerDetails.getPassword() != null){
+		    status= registerService.saveUser(registerDetails);   
+		    return "200";
 	   }else{
-		   return "400";
+		    return "404";
 	   }
    }
 }

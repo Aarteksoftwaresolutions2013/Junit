@@ -1,5 +1,6 @@
 package com.crud.controller;
 
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -41,15 +42,19 @@ public class RegistrationConrollerTest {
 	@Before
 	public void setUp(){
 		registerUserDetails = new Register();
+		
+	}
+	
+	//Positive Test Case
+	@Test
+	public void testSaveUser() throws Exception {
+		
 		registerUserDetails.setContactNumber("1234567891");
-		registerUserDetails.setEmail("v@gmail.com");
+		registerUserDetails.setEmail("vicman@gmail.com");
 		registerUserDetails.setFirstName("vicky kumar");
 		registerUserDetails.setLastName("mandloi");
 		registerUserDetails.setPassword("1234567");
-	}
-	
-	@Test
-	public void testSaveUser() throws Exception {
+		
 		String json  = mapper.writeValueAsString(registerUserDetails);
 	    ResultActions result =  mockMvc.perform(post("/registerUser")
 				.contentType(MediaType.APPLICATION_JSON)
@@ -58,8 +63,28 @@ public class RegistrationConrollerTest {
 				.andExpect(status().isOk());
 		MvcResult mvcResulet =	result.andReturn();
 		MockHttpServletResponse response  = mvcResulet.getResponse();
-		
 		System.out.println(response.getContentAsString());
+		assertEquals("200", response.getContentAsString());
 	}
 
+	//Negative Test Case
+	@Test
+	public void testSaveUser_404() throws Exception {
+		
+		registerUserDetails.setContactNumber("1234567891");
+		registerUserDetails.setFirstName("v kumar");
+		registerUserDetails.setLastName("mandloi");
+		registerUserDetails.setPassword("1234567");
+		
+		String json  = mapper.writeValueAsString(registerUserDetails);
+	    ResultActions result =  mockMvc.perform(post("/registerUser")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(json)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+		MvcResult mvcResulet =	result.andReturn();
+		MockHttpServletResponse response  = mvcResulet.getResponse();
+		System.out.println(response.getContentAsString());
+		assertEquals("404", response.getContentAsString());
+	}
 }

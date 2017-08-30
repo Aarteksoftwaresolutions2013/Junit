@@ -17,12 +17,17 @@ public class UserController {
 	private UserService UserService ;
 	
 	@RequestMapping(value = "/user" , method = RequestMethod.POST)
-	public Register login(@RequestBody Register user){
+	public String login(@RequestBody Register user){
 		System.out.println("Inside login method of User Controller");
 		System.out.println(user.getEmail());
 		System.out.println(user.getPassword());
 		
-		return UserService.findByEmailAndPassword(user);
-				
+		boolean userDetails   =  UserService.findByEmailAndPassword(user);
+		System.out.println(userDetails);
+	    if(userDetails){
+	    	return "200";
+	    }else{
+	    	return "404";
+	    }
 	}
 }

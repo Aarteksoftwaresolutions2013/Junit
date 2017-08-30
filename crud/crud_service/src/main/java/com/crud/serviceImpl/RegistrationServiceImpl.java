@@ -15,7 +15,7 @@ public class RegistrationServiceImpl implements RegistrationService{
 	
 	public boolean saveUser(Register registerDetails) {
          System.out.println("saveUser method of Register service impl");
-         if(registerDetails!=null){
+         if(registerDetails!=null && registerDetails.getEmail() != null && registerDetails.getPassword() != null){
         	 registerRepository.save(registerDetails);
         	 return true;
          }else{

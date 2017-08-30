@@ -68,7 +68,4 @@ public class Register {
 		this.password = password;
 	}
 	
-	
-	
-
 }

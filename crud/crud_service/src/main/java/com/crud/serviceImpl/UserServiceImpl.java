@@ -14,10 +14,16 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserRepository userRepository;
 	
-	public Register findByEmailAndPassword(Register user) {
+	public boolean findByEmailAndPassword(Register user) {
 	   System.out.println(user.getEmail());
 	   System.out.println(user.getPassword());
-		return userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+	   Register userDetail  =  userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+	   if(userDetail!=null){
+		   return true;
+	   }else
+	   {
+		   return false;
+	   }
 	
 	}
 

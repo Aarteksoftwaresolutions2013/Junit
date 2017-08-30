@@ -28,17 +28,63 @@ public class RegistrationServiceTest {
 	@Before
 	public void setUp(){
 		registerUserDetails = new Register();
-		registerUserDetails.setContactNumber("1234567891");
-		registerUserDetails.setEmail("v@gmail.com");
-		registerUserDetails.setFirstName("vicky kumar");
+	}
+	
+	//Positive Test Case
+	@Test
+	public void testSaveUser_Success() {
+		
+		registerUserDetails.setContactNumber("123456");
+		registerUserDetails.setEmail("ken@gmail.com");
+		registerUserDetails.setFirstName("brother");
 		registerUserDetails.setLastName("mandloi");
 		registerUserDetails.setPassword("1234567");
+		
+	  boolean checkRegiseterUser = 	registrationSerivice.saveUser(registerUserDetails) ;
+	  System.out.println(checkRegiseterUser);
+	  assertEquals(true,checkRegiseterUser);
+	}
+	
+	
+	//Negative Test Case
+	@Test
+	public void testSaveUser_404_WithoutEmailId() {
+		
+		registerUserDetails.setContactNumber("1234567891");
+		registerUserDetails.setFirstName("vicfgfgKumar");
+		registerUserDetails.setLastName("mandloi");
+		registerUserDetails.setPassword("1234567");
+		
+	  boolean checkRegiseterUser = 	registrationSerivice.saveUser(registerUserDetails) ;
+	  System.out.println(checkRegiseterUser);
+	  assertEquals(false,checkRegiseterUser);
 	}
 	
 	@Test
-	public void test() {
+	public void testSaveUser_404_WithoutPassword() {
+		
+		registerUserDetails.setContactNumber("1234567891");
+		registerUserDetails.setEmail("neeraj@gmail.com");
+		registerUserDetails.setFirstName("vicfgfgKumar");
+		registerUserDetails.setLastName("mandloi");
+		
+		
 	  boolean checkRegiseterUser = 	registrationSerivice.saveUser(registerUserDetails) ;
-	  assertEquals(true,checkRegiseterUser);
+	  System.out.println(checkRegiseterUser);
+	  assertEquals(false,checkRegiseterUser);
+	}
+	
+	@Test
+	public void testSaveUser_404_WithoutEmailAndPassword() {
+		
+		registerUserDetails.setContactNumber("1234567891");
+		registerUserDetails.setFirstName("vicfgfgKumar");
+		registerUserDetails.setLastName("mandloi");
+		
+		
+	  boolean checkRegiseterUser = 	registrationSerivice.saveUser(registerUserDetails) ;
+	  System.out.println(checkRegiseterUser);
+	  assertEquals(false,checkRegiseterUser);
 	}
 
 }

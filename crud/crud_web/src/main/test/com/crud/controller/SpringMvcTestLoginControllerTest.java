@@ -1,7 +1,10 @@
 package com.crud.controller;
 
+import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.net.HttpURLConnection;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -39,14 +42,16 @@ public class SpringMvcTestLoginControllerTest {
 	@Before
 	public void setUp() {
 		register = new Register();
-		register.setEmail("shubh@gmail.com");
-		register.setPassword("1234567");
-
 	}
 
+	//Positive Test Case
 	@Test
 	public void testUserLogin() throws Exception {
-
+		
+		register.setEmail("shubh@gmail.com");
+		register.setPassword("1234567");
+		
+		
 		String json = mapper.writeValueAsString(register);
 		ResultActions result = mvc.perform(
 				post("/user").contentType(MediaType.APPLICATION_JSON).content(json).accept(MediaType.APPLICATION_JSON))
@@ -54,8 +59,26 @@ public class SpringMvcTestLoginControllerTest {
 
 		MvcResult mvcResult = result.andReturn();
 		MockHttpServletResponse response = mvcResult.getResponse();
-		System.out.println("................................");
 		System.out.println(response.getContentAsString());
-
+	    assertEquals("200",response.getContentAsString());
 	}
+	
+	//Negative Test Case
+	@Test
+	public void testUserLogin_404() throws Exception {
+		
+		register.setEmail("shubh@gmail.com");
+		register.setPassword("123456");
+		
+		String json = mapper.writeValueAsString(register);
+		ResultActions result = mvc.perform(
+				post("/user").contentType(MediaType.APPLICATION_JSON).content(json).accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+
+		MvcResult mvcResult = result.andReturn();
+		MockHttpServletResponse response = mvcResult.getResponse();
+		System.out.println(response.getContentAsString());
+	    assertEquals("404",response.getContentAsString());
+	}
+	
 }

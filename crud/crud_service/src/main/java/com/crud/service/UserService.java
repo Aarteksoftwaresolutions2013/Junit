@@ -11,5 +11,5 @@ public interface UserService {
 	 * @param user
 	 * @return
 	 */
-	public Register findByEmailAndPassword(Register user);
+	public boolean findByEmailAndPassword(Register user);
 }

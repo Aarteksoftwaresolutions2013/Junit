@@ -31,14 +31,30 @@ public class UserServiceTest {
 	@Before
 	public void setUp(){
 		user = new Register();
-		user.setEmail("vicky@gmail.com");
-		user.setPassword("1234567");
 	}
 	
+	//Positive test case
 	@Test
-	public void test() {
-	Register userDetails =  userService.findByEmailAndPassword(user);
-	assertEquals("vicky",userDetails.getFirstName());
+	public void testFindByEmailAndPassword_Success() {
+		
+	 user.setEmail("vicky@gmail.com");
+	 user.setPassword("1234567");
+		
+	boolean userDetails =  userService.findByEmailAndPassword(user);
+	System.out.println(userDetails);
+	assertEquals(true,userDetails);
+	}
+	
+	//Negative test case
+	@Test
+	public void testFindByEmailAndPassword_404() {
+		
+	 user.setEmail("vicky@gmail.com");
+	 user.setPassword("123456");
+		
+	boolean userDetails =  userService.findByEmailAndPassword(user);
+	System.out.println(userDetails);
+	assertEquals(false,userDetails);
 	}
 
 }

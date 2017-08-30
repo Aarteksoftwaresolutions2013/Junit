@@ -25,10 +25,17 @@ public class UserRepoTest {
 	@Autowired
 	private UserRepository userRepository;
 	
+	/*.........Positive case.......*/
 	@Test
-	public void test() {
-	 Register user = userRepository.findByEmailAndPassword("shubhe@gmail.com", "1234567");
-	 assertEquals("shubhe@gmail.com", user.getEmail());
+	public void testFindByEmailPasswors_success() {
+	 Register user = userRepository.findByEmailAndPassword("shubh@gmail.com", "1234567");
+	 assertEquals("9713707037", user.getContactNumber());
 	}
-
+	
+	/*.........Negative case.......*/
+	@Test
+	public void testFindByEmailPassword_Unsess(){
+		 Register user = userRepository.findByEmailAndPassword("shubh@gmail.com", "123");
+		 assertNull(user);
+	}
 }
